@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SINBAD — Бассейный комплекс в Ташкенте</title>
+  <meta name="description" content="SINBAD — пляжный бассейный комплекс в Ташкенте. Большой бассейн, открытый пляж, сцена, караоке, бары и детская зона. Цены, меню, правила и контакты." />
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='42' r='22' fill='%23FFC93C'/%3E%3Cpath d='M0 70 q25 -14 50 0 t50 0 v30 H0 z' fill='%2314B8D4'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- ===================== ШАПКА ===================== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="SINBAD — бассейный комплекс">
+        <!-- ЛОГОТИП (SVG, в стиле Instagram-бренда: солнце + волна) -->
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="44" height="44">
+            <defs>
+              <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FFD86B"/>
+                <stop offset="1" stop-color="#FF9F40"/>
+              </linearGradient>
+              <linearGradient id="wave" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#22C7DE"/>
+                <stop offset="1" stop-color="#0E9BB8"/>
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="26" r="15" fill="url(#sun)"/>
+            <path d="M2 40 q10 -7 16 0 t16 0 t16 0 t16 0 v24 H2 z" fill="url(#wave)"/>
+            <path d="M2 47 q10 -7 16 0 t16 0 t16 0 t16 0 v18 H2 z" fill="#0B7E97" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="logo__text">
+          <span class="logo__name">SINBAD</span>
+          <span class="logo__sub">бассейный комплекс</span>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основное меню">
+        <a href="#about">О комплексе</a>
+        <a href="#prices">Цены</a>
+        <a href="#menu">Меню</a>
+        <a href="#bar">Бар</a>
+        <a href="#rules">Правила</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <a href="tel:+998931188880" class="btn btn--phone header__cta">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg>
+        <span>+998 93 118 88 80</span>
+      </a>
+
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== ГЛАВНЫЙ ЭКРАН ===================== -->
+  <section class="hero" id="hero">
+    <!-- декоративные пузыри -->
+    <div class="bubbles" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero__sun" aria-hidden="true"></div>
+
+    <div class="container hero__inner">
+      <p class="eyebrow reveal">☀️ Сезон 2026 открыт · ежедневно 10:10 – 22:00</p>
+      <h1 class="hero__title reveal">Окунись<br/>в лето <span>с головой</span></h1>
+      <p class="hero__lead reveal">Пляжный бассейн с большой концертной сценой, пенными вечеринками, барами и зоной отдыха для всей семьи. Музыка, коктейли и полное расслабление.</p>
+
+      <div class="hero__actions reveal">
+        <a href="#prices" class="btn btn--primary">Смотреть цены</a>
+        <a href="https://instagram.com/sinbad.uz" target="_blank" rel="noopener" class="btn btn--ghost">
+          <!-- <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.43.42.69.82.9 1.4.18.45.38 1.05.43 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.42.43-.82.69-1.4.9-.45.18-1.05.38-2.2.43-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.43-.42-.69-.82-.9-1.4-.18-.45-.38-1.05-.43-2.2C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.42-.43.82-.69 1.4-.9.45-.18 1.05-.38 2.2-.43C8.4 2.21 8.8 2.2 12 2.2m0 1.98c-3.15 0-3.52.01-4.76.07-1.15.05-1.77.25-2.18.41-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.36 1.03-.41 2.18-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.05 1.15.25 1.77.41 2.18.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.36 2.18.41 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.15-.05 1.77-.25 2.18-.41.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.36-1.03.41-2.18.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.15-.25-1.77-.41-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.36-2.18-.41-1.24-.06-1.61-.07-4.76-.07m0 3.37a4.45 4.45 0 1 1 0 8.9 4.45 4.45 0 0 1 0-8.9m0 1.98a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94m5.66-2.2a1.04 1.04 0 1 1-2.08 0 1.04 1.04 0 0 1 2.08 0"/></svg>
+          @sinbad.uz -->
+          instagram
+        </a>
+      </div>
+
+      <ul class="hero__chips reveal" aria-label="Кратко о комплексе">
+        <li>🏖 Открытый пляж</li>
+        <li>🎤 Большая сцена</li>
+        <li>🍹 Два бара</li>
+        <li>👨‍👩‍👧 Детская зона</li>
+      </ul>
+    </div>
+
+    <!-- волна-разделитель -->
+    <svg class="wave-divider" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C240,120 480,16 720,48 C960,80 1200,128 1440,72 L1440,120 L0,120 Z"></path>
+    </svg>
+  </section>
+
+  <!-- ===================== О КОМПЛЕКСЕ ===================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow eyebrow--ink">О комплексе</p>
+        <h2 class="section__title">Целый мир водных развлечений</h2>
+        <p class="section__lead">SINBAD — это не просто бассейн, а летнее настроение каждый день. Просторная чистая вода, живая сцена, пенные вечеринки и отдельная зона для самых маленьких гостей.</p>
+      </header>
+
+      <div class="features">
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#14B8D4">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M3 18c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1v2c-1.5 0-1.5 1-3 1s-1.5-1-3-1-1.5 1-3 1-1.5-1-3-1-1.5 1-3 1-1.5-1-3-1zm5-3V6a3 3 0 0 1 6 0h-2a1 1 0 0 0-2 0v9zm8 0V8h2v7z"/></svg>
+          </span>
+          <h3>Большой бассейн</h3>
+          <p>Просторный чистый бассейн и собственный пляж под открытым небом.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#FF7A59">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 3a4 4 0 0 1 4 4v1h2a1 1 0 0 1 1 1v3a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V9a1 1 0 0 1 1-1h2V7a4 4 0 0 1 2-3.46zM10 19h4l1 2H9z"/></svg>
+          </span>
+          <h3>Сцена и живая музыка</h3>
+          <p>Большая концертная сцена: диджеи, любимые исполнители и зажигательные треки.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#FFC93C">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 13a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v4a3 3 0 0 0 3 3m5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V20H8v2h8v-2h-3v-3.08A7 7 0 0 0 19 10z"/></svg>
+          </span>
+          <h3>Караоке-румы</h3>
+          <p>Отдельные караоке-комнаты — пой любимые хиты в компании друзей.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#14B8D4">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M7 12a5 5 0 1 1 10 0 5 5 0 0 1-10 0m5-9a1 1 0 0 1 1 1v2h-2V4a1 1 0 0 1 1-1m0 14a1 1 0 0 1 1 1v2h-2v-2a1 1 0 0 1 1-1M3 11h2v2H3zm16 0h2v2h-2zM5.6 5.6 7 7 5.6 8.4 4.2 7zM17 7l1.4-1.4L19.8 7 18.4 8.4z"/></svg>
+          </span>
+          <h3>3 детских бассейна</h3>
+          <p>Чисто, безопасно и комфортно — отдельные бассейны для малышей.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#FF7A59">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M3 11h18l-2 9a1 1 0 0 1-1 .8H6a1 1 0 0 1-1-.8zm9-9c2.8 0 5 1.8 5.5 4.4.1.4-.2.6-.5.6H7c-.3 0-.6-.2-.5-.6C7 3.8 9.2 2 12 2"/></svg>
+          </span>
+          <h3>Два бара</h3>
+          <p>Освежающие коктейли, напитки и закуски прямо у воды.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#FFC93C">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2a8 8 0 0 1 0 16 8 8 0 0 1 0-16m-1 3v6l5 3-.8 1.7L9 13V7z"/></svg>
+          </span>
+          <h3>Спорт и активный отдых</h3>
+          <p>Зона для спортивных игр, волейбол и пространство для активного отдыха.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#14B8D4">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8m0 2c-3.3 0-6 1.8-6 4v2h12v-2c0-2.2-2.7-4-6-4m8-3a3 3 0 1 0 0-6 3 3 0 0 0 0 6m0 1.5c-1 0-1.9.2-2.6.6.9.9 1.6 2 1.6 3.4v.5h4v-1.5c0-1.7-1.6-3-3-3"/></svg>
+          </span>
+          <h3>Вечеринки и аниматоры</h3>
+          <p>Пенные вечеринки, конкурсы с призами, фокусники и весёлый ведущий.</p>
+        </article>
+
+        <article class="feature reveal">
+          <span class="feature__icon" style="--c:#FF7A59">
+            <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M5 21V8l7-5 7 5v13h-5v-6H10v6zm2-2h1v-6h8v6h1V9l-5-3.6L7 9z"/></svg>
+          </span>
+          <h3>Зона отдыха</h3>
+          <p>Удобные лежаки, столики и плетёная мебель в тени.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ЦЕНЫ ===================== -->
+  <section class="section section--soft" id="prices">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow eyebrow--ink">Цены</p>
+        <h2 class="section__title">Стоимость входа на весь день</h2>
+        <p class="section__lead">Билет действует с 10:10 до 22:00. Дети до 3 лет — бесплатно.</p>
+      </header>
+
+      <div class="prices">
+        <article class="price-card reveal">
+          <div class="price-card__top">
+            <span class="tag">Будние дни</span>
+            <p>Пн – Пт</p>
+          </div>
+          <ul class="price-list">
+            <li><span>Взрослый · весь день</span><b>150 000 сум</b></li>
+            <li><span>Взрослый · после 18:00</span><b>80 000 сум</b></li>
+            <li><span>Детский · 4–12 лет</span><b>70 000 сум</b></li>
+            <li><span>Дети до 3 лет</span><b class="free">Бесплатно</b></li>
+          </ul>
+        </article>
+
+        <article class="price-card price-card--accent reveal">
+          <div class="price-card__top">
+            <span class="tag tag--light">Выходные</span>
+            <p>Сб – Вс</p>
+          </div>
+          <ul class="price-list">
+            <li><span>Взрослый · весь день</span><b>180 000 сум</b></li>
+            <li><span>Детский · 4–12 лет</span><b>90 000 сум</b></li>
+            <li><span>Дети до 3 лет</span><b class="free">Бесплатно</b></li>
+          </ul>
+          <p class="price-card__note">Самое жаркое время — живая музыка и вечеринки</p>
+        </article>
+      </div>
+
+      <!-- АКЦИИ -->
+      <div class="promos reveal">
+        <h3 class="promos__title">🎉 Акции каждую неделю</h3>
+        <div class="promos__grid">
+          <div class="promo"><span class="promo__day">Вт · Чт</span><p>Скидка <b>50%</b> для девушек от 13 лет</p></div>
+          <div class="promo"><span class="promo__day">Пн · Ср</span><p>Скидка <b>50 000 сум</b> для всех гостей</p></div>
+          <div class="promo"><span class="promo__day">Пятница</span><p>Детям — <b>вход бесплатно</b></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== МЕНЮ (КУХНЯ) ===================== -->
+  <section class="section" id="menu">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow eyebrow--ink">Меню</p>
+        <h2 class="section__title">Вкусно для всей семьи</h2>
+        <p class="section__lead">Разнообразная еда у воды — от лёгких закусок до сытных блюд.</p>
+      </header>
+
+      <div class="menu-grid">
+        <article class="menu-cat reveal">
+          <h3 class="menu-cat__title">🍟 Закуски &amp; фастфуд</h3>
+          <ul class="menu-list">
+            <li><span>Картофель фри</span><i></i><b>25 000</b></li>
+            <li><span>Куриные наггетсы</span><i></i><b>30 000</b></li>
+            <li><span>Куриные крылышки BBQ</span><i></i><b>40 000</b></li>
+            <li><span>Луковые кольца</span><i></i><b>28 000</b></li>
+            <li><span>Сырные палочки</span><i></i><b>32 000</b></li>
+          </ul>
+        </article>
+
+        <article class="menu-cat reveal">
+          <h3 class="menu-cat__title">🍔 Основные блюда</h3>
+          <ul class="menu-list">
+            <li><span>Бургер классический</span><i></i><b>45 000</b></li>
+            <li><span>Чизбургер</span><i></i><b>50 000</b></li>
+            <li><span>Хот-дог</span><i></i><b>30 000</b></li>
+            <li><span>Пицца «Маргарита»</span><i></i><b>55 000</b></li>
+            <li><span>Шашлык (порция)</span><i></i><b>60 000</b></li>
+            <li><span>Цезарь с курицей</span><i></i><b>48 000</b></li>
+          </ul>
+        </article>
+
+        <article class="menu-cat reveal">
+          <h3 class="menu-cat__title">🍨 Десерты &amp; фрукты</h3>
+          <ul class="menu-list">
+            <li><span>Мороженое (3 шарика)</span><i></i><b>20 000</b></li>
+            <li><span>Фруктовая тарелка</span><i></i><b>35 000</b></li>
+            <li><span>Блинчики с топингом</span><i></i><b>28 000</b></li>
+            <li><span>Чизкейк</span><i></i><b>30 000</b></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== БАР ===================== -->
+  <section class="section section--bar" id="bar">
+    <div class="bar__decor" aria-hidden="true">🍹</div>
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow">Бар</p>
+        <h2 class="section__title section__title--light">Коктейли и напитки</h2>
+        <p class="section__lead section__lead--light">Два бара у бассейна. Освежающие коктейли, фреши и прохладительные напитки — не выходя из воды.</p>
+      </header>
+
+      <div class="menu-grid">
+        <article class="bar-cat reveal">
+          <h3 class="bar-cat__title">🍸 Коктейли</h3>
+          <ul class="menu-list menu-list--light">
+            <li><span>Мохито классический</span><i></i><b>35 000</b></li>
+            <li><span>Пина Колада</span><i></i><b>45 000</b></li>
+            <li><span>Маргарита</span><i></i><b>45 000</b></li>
+            <li><span>Текила Санрайз</span><i></i><b>42 000</b></li>
+            <li><span>Аперол Шприц</span><i></i><b>50 000</b></li>
+          </ul>
+        </article>
+
+        <article class="bar-cat reveal">
+          <h3 class="bar-cat__title">🥤 Безалкогольные</h3>
+          <ul class="menu-list menu-list--light">
+            <li><span>Мохито безалкогольный</span><i></i><b>30 000</b></li>
+            <li><span>Свежевыжатый сок</span><i></i><b>25 000</b></li>
+            <li><span>Домашний лимонад</span><i></i><b>22 000</b></li>
+            <li><span>Молочный коктейль</span><i></i><b>28 000</b></li>
+            <li><span>Смузи</span><i></i><b>30 000</b></li>
+          </ul>
+        </article>
+
+        <article class="bar-cat reveal">
+          <h3 class="bar-cat__title">☕ Напитки</h3>
+          <ul class="menu-list menu-list--light">
+            <li><span>Чай / Кофе</span><i></i><b>15 000</b></li>
+            <li><span>Вода 0,5 л</span><i></i><b>8 000</b></li>
+            <li><span>Газировка</span><i></i><b>12 000</b></li>
+            <li><span>Энергетик</span><i></i><b>22 000</b></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПРАВИЛА ===================== -->
+  <section class="section section--soft" id="rules">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow eyebrow--ink">Правила</p>
+        <h2 class="section__title warning_title">Чтобы отдых был в радость</h2>
+        <p class="section__lead">Простые правила, которые делают отдых безопасным и приятным для всех гостей.</p>
+      </header>
+
+      <div class="rules">
+        <div class="rule reveal"><span class="rule__num">1</span><p>Перед входом в бассейн примите душ.</p></div>
+        <div class="rule reveal"><span class="rule__num">2</span><p>Дети до 12 лет допускаются только в сопровождении взрослых.</p></div>
+        <div class="rule reveal"><span class="rule__num">3</span><p>Не ныряйте в местах с малой глубиной.</p></div>
+        <div class="rule reveal"><span class="rule__num">4</span><p>Купальный костюм обязателен для посещения бассейна.</p></div>
+        <div class="rule reveal"><span class="rule__num">5</span><p>Запрещены стеклянная посуда и острые предметы у воды.</p></div>
+        <div class="rule reveal"><span class="rule__num">6</span><p>Соблюдайте чистоту — пользуйтесь урнами.</p></div>
+        <div class="rule reveal"><span class="rule__num">7</span><p>Вход в нетрезвом виде запрещён.</p></div>
+        <div class="rule reveal"><span class="rule__num">8</span><p>Администрация не отвечает за оставленные без присмотра вещи.</p></div>
+        <div class="rule reveal"><span class="rule__num">9</span><p>Уважайте других гостей и персонал комплекса.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ГАЛЕРЕЯ ===================== -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow eyebrow--ink">Галерея</p>
+        <h2 class="section__title">Атмосфера SINBAD</h2>
+      </header>
+
+      <div class="gallery">
+        <figure class="gallery__item gallery__item--big reveal">
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80" alt="Бассейн с лежаками" loading="lazy" />
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=800&q=80" alt="Чистая голубая вода бассейна" loading="lazy" />
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80" alt="Освежающие коктейли" loading="lazy" />
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&w=800&q=80" alt="Пляж и солнце" loading="lazy" />
+        </figure>
+        <figure class="gallery__item reveal">
+          <img src="https://images.unsplash.com/photo-1535025183041-0991a977e25b?auto=format&fit=crop&w=800&q=80" alt="Вечеринка у бассейна" loading="lazy" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== КОНТАКТЫ ===================== -->
+  <section class="section section--soft" id="contacts">
+    <div class="container">
+      <header class="section__head reveal">
+        <p class="eyebrow eyebrow--ink">Контакты</p>
+        <h2 class="section__title">Как нас найти</h2>
+      </header>
+
+      <div class="contacts">
+        <div class="contacts__info reveal">
+          <div class="contact-row">
+            <span class="contact-ic">📍</span>
+            <div><b>Адрес</b><p>г. Ташкент, Учтепинский район, ул. Фозилтепа, Чиланзар-25, 11/1<br/><small>Ориентир: банкетный зал «NUR SAROY»</small></p></div>
+          </div>
+          <div class="contact-row">
+            <span class="contact-ic">🕙</span>
+            <div><b>Режим работы</b><p>Ежедневно 10:10 – 22:00</p></div>
+          </div>
+          <div class="contact-row">
+            <span class="contact-ic">📞</span>
+            <div><b>Телефоны</b><p><a href="tel:+998931188880">+998 93 118 88 80</a><br/><a href="tel:+998771828880">+998 77 182 88 80</a></p></div>
+          </div>
+          <div class="socials">
+            <a href="https://instagram.com/sinbad.uz" target="_blank" rel="noopener" class="social social--ig">Instagram</a>
+            <a href="https://t.me/sinbaduz" target="_blank" rel="noopener" class="social social--tg">Telegram</a>
+            <a href="https://maps.google.com/maps?q=41.2840819,69.1656307" target="_blank" rel="noopener" class="social social--map">Маршрут</a>
+          </div>
+        </div>
+
+        <div class="contacts__map reveal">
+          <iframe
+            title="SINBAD на карте"
+            src="https://maps.google.com/maps?q=41.2840819,69.1656307&z=16&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ПОДВАЛ ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="logo logo--footer">
+        <span class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="40" height="40">
+            <circle cx="32" cy="26" r="15" fill="#FFC93C"/>
+            <path d="M2 40 q10 -7 16 0 t16 0 t16 0 t16 0 v24 H2 z" fill="#22C7DE"/>
+            <path d="M2 47 q10 -7 16 0 t16 0 t16 0 t16 0 v18 H2 z" fill="#0B7E97" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="logo__text"><span class="logo__name">SINBAD</span><span class="logo__sub">бассейный комплекс</span></span>
+      </a>
+      <p class="footer__copy">© 2026 SINBAD · Бассейный комплекс, Ташкент. Все права защищены.</p>
+      <nav class="footer__nav" aria-label="Подвал">
+        <a href="#prices">Цены</a>
+        <a href="#menu">Меню</a>
+        <a href="#rules">Правила</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

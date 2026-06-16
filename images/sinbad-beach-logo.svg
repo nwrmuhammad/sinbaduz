@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <radialGradient id="bgGrad" cx="45%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#a8d8ea"/>
+      <stop offset="60%" stop-color="#7ec8e3"/>
+      <stop offset="100%" stop-color="#5aaccc"/>
+    </radialGradient>
+    <clipPath id="circleClip">
+      <circle cx="200" cy="200" r="190"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="190" fill="url(#bgGrad)"/>
+
+  <!-- Top-right leaves cluster -->
+  <g clip-path="url(#circleClip)" opacity="0.95">
+    <!-- Large leaf top-right -->
+    <ellipse cx="310" cy="80" rx="55" ry="25" fill="#4caf50" transform="rotate(-40, 310, 80)"/>
+    <ellipse cx="310" cy="80" rx="55" ry="25" fill="#66bb6a" transform="rotate(-40, 310, 80)" opacity="0.6"/>
+    <line x1="310" y1="80" x2="355" y2="55" stroke="#2e7d32" stroke-width="1.5"/>
+
+    <ellipse cx="345" cy="110" rx="48" ry="20" fill="#388e3c" transform="rotate(-60, 345, 110)"/>
+    <line x1="345" y1="110" x2="385" y2="90" stroke="#1b5e20" stroke-width="1.5"/>
+
+    <ellipse cx="290" cy="55" rx="40" ry="18" fill="#558b2f" transform="rotate(-25, 290, 55)"/>
+    <line x1="290" y1="55" x2="325" y2="38" stroke="#33691e" stroke-width="1.2"/>
+
+    <ellipse cx="335" cy="145" rx="42" ry="17" fill="#43a047" transform="rotate(-75, 335, 145)"/>
+    <line x1="335" y1="145" x2="370" y2="135" stroke="#2e7d32" stroke-width="1.2"/>
+
+    <!-- Small accent leaf -->
+    <ellipse cx="265" cy="70" rx="30" ry="13" fill="#7cb342" transform="rotate(-15, 265, 70)"/>
+
+    <!-- Dark shadow leaf -->
+    <ellipse cx="320" cy="95" rx="50" ry="22" fill="#1b5e20" transform="rotate(-50, 320, 95)" opacity="0.35"/>
+  </g>
+
+  <!-- Bottom-left leaves cluster -->
+  <g clip-path="url(#circleClip)" opacity="0.95">
+    <ellipse cx="90" cy="310" rx="55" ry="24" fill="#4caf50" transform="rotate(30, 90, 310)"/>
+    <line x1="90" y1="310" x2="50" y2="340" stroke="#2e7d32" stroke-width="1.5"/>
+
+    <ellipse cx="55" cy="280" rx="48" ry="20" fill="#388e3c" transform="rotate(55, 55, 280)"/>
+    <line x1="55" y1="280" x2="20" y2="295" stroke="#1b5e20" stroke-width="1.5"/>
+
+    <ellipse cx="115" cy="345" rx="42" ry="18" fill="#558b2f" transform="rotate(15, 115, 345)"/>
+    <line x1="115" y1="345" x2="85" y2="375" stroke="#33691e" stroke-width="1.2"/>
+
+    <ellipse cx="60" cy="330" rx="38" ry="16" fill="#43a047" transform="rotate(70, 60, 330)"/>
+
+    <ellipse cx="80" cy="355" rx="35" ry="15" fill="#7cb342" transform="rotate(10, 80, 355)"/>
+
+    <!-- Shadow -->
+    <ellipse cx="75" cy="305" rx="52" ry="22" fill="#1b5e20" transform="rotate(40, 75, 305)" opacity="0.35"/>
+  </g>
+
+  <!-- Ship wheel + anchor icon -->
+  <g transform="translate(200, 148)" fill="white">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="white" stroke-width="3"/>
+    <!-- Inner hub -->
+    <circle cx="0" cy="0" r="8" fill="white"/>
+    <!-- Spokes -->
+    <line x1="0" y1="-28" x2="0" y2="-8" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="0" y1="28" x2="0" y2="8" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-28" y1="0" x2="-8" y2="0" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="28" y1="0" x2="8" y2="0" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-19.8" y1="-19.8" x2="-5.6" y2="-5.6" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="19.8" y1="19.8" x2="5.6" y2="5.6" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="19.8" y1="-19.8" x2="5.6" y2="-5.6" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-19.8" y1="19.8" x2="-5.6" y2="5.6" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    <!-- Handle knobs -->
+    <circle cx="0" cy="-30" r="4" fill="white"/>
+    <circle cx="0" cy="30" r="4" fill="white"/>
+    <circle cx="-30" cy="0" r="4" fill="white"/>
+    <circle cx="30" cy="0" r="4" fill="white"/>
+    <circle cx="-21" cy="-21" r="4" fill="white"/>
+    <circle cx="21" cy="21" r="4" fill="white"/>
+    <circle cx="21" cy="-21" r="4" fill="white"/>
+    <circle cx="-21" cy="21" r="4" fill="white"/>
+  </g>
+
+  <!-- Anchor below wheel -->
+  <g transform="translate(200, 175)" fill="white" stroke="white">
+    <!-- Anchor vertical bar -->
+    <line x1="0" y1="-5" x2="0" y2="22" stroke="white" stroke-width="3"/>
+    <!-- Anchor ring at top -->
+    <circle cx="0" cy="-8" r="5" fill="none" stroke="white" stroke-width="2.5"/>
+    <!-- Anchor crossbar -->
+    <line x1="-14" y1="0" x2="14" y2="0" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Anchor flukes -->
+    <path d="M0,22 Q-18,18 -16,8" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M0,22 Q18,18 16,8" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Fluke tips -->
+    <circle cx="-16" cy="8" r="3" fill="white"/>
+    <circle cx="16" cy="8" r="3" fill="white"/>
+  </g>
+
+  <!-- SINBAD text -->
+  <text
+    x="200"
+    y="252"
+    font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-size="52"
+    font-weight="900"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="4"
+  >SINBAD</text>
+
+  <!-- beach script text -->
+  <text
+    x="268"
+    y="285"
+    font-family="'Brush Script MT', 'Pacifico', cursive"
+    font-size="34"
+    font-weight="400"
+    fill="#f5c842"
+    text-anchor="middle"
+    font-style="italic"
+  >beach</text>
+
+  <!-- Subtle diagonal slash between N and B (logo detail) -->
+  <line x1="207" y1="225" x2="213" y2="252" stroke="white" stroke-width="2" opacity="0.5"/>
+</svg>
