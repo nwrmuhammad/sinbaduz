@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Sinbad</title>
+  <script src="tracker.js"></script>
+  <!-- robots meta: axtarish tizimlari topmaydi -->
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --dark: #0D0D0D;
+      --dark2: #131313;
+      --dark3: #1C1C1C;
+      --dark4: #242424;
+      --text: #E8E0D0;
+      --text-muted: #6A6055;
+      --border: rgba(201,168,76,0.18);
+      --instagram: #E1306C;
+      --telegram: #2CA5E0;
+      --google: #4285F4;
+      --yandex: #FF0000;
+      --direct: #8B7355;
+      --other: #5A5A5A;
+      --success: #4CAF50;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* === LOGIN SCREEN === */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .login-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .login-card p {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-bottom: 32px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .login-card input {
+      width: 100%;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .login-card input:focus { border-color: var(--gold); }
+
+    .login-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .login-btn:hover { opacity: 0.88; }
+
+    .login-error {
+      color: #E05C5C;
+      font-size: 0.82rem;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* === DASHBOARD === */
+    #dashboard { display: none; }
+
+    .topbar {
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    .topbar-badge {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 8px 16px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-outline:hover { background: var(--dark3); }
+
+    .btn-gold {
+      background: var(--gold);
+      border: none;
+      border-radius: 7px;
+      padding: 8px 16px;
+      color: var(--dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-gold:hover { opacity: 0.85; }
+
+    .main {
+      padding: 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* STATS GRID */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent, var(--gold));
+    }
+
+    .stat-card.instagram { --accent: var(--instagram); }
+    .stat-card.telegram { --accent: var(--telegram); }
+    .stat-card.google { --accent: var(--google); }
+    .stat-card.yandex { --accent: var(--yandex); }
+    .stat-card.direct { --accent: var(--direct); }
+    .stat-card.total { --accent: var(--gold); }
+
+    .stat-icon { font-size: 20px; margin-bottom: 10px; }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .stat-pct {
+      font-size: 0.72rem;
+      color: var(--accent, var(--gold));
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* SOURCE BAR CHART */
+    .bar-section {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .bar-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      width: 110px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .bar-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 8px;
+      background: var(--dark4);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .bar-count {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      width: 36px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* BOOKINGS TABLE */
+    .table-section {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .table-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .booking-count {
+      font-size: 0.75rem;
+      background: rgba(201,168,76,0.12);
+      border-radius: 20px;
+      padding: 3px 10px;
+      color: var(--gold);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      padding: 10px 16px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: left;
+      background: var(--dark3);
+    }
+
+    tbody tr {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover { background: var(--dark3); }
+
+    tbody td {
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    .source-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .source-tag.instagram { background: rgba(225,48,108,0.15); color: var(--instagram); }
+    .source-tag.telegram { background: rgba(44,165,224,0.15); color: var(--telegram); }
+    .source-tag.google_maps { background: rgba(66,133,244,0.15); color: var(--google); }
+    .source-tag.yandex_maps { background: rgba(255,0,0,0.12); color: var(--yandex); }
+    .source-tag.direct { background: rgba(139,115,85,0.15); color: var(--direct); }
+    .source-tag.other { background: rgba(90,90,90,0.2); color: #888; }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .empty-icon { font-size: 32px; margin-bottom: 12px; }
+
+    .daily-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+
+    .day-cell {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .day-date { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 4px; }
+    .day-count { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+
+    .refresh-info {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+      padding-bottom: 40px;
+    }
+
+    @media (max-width: 640px) {
+      .topbar { padding: 12px 16px; }
+      .main { padding: 16px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      table thead { display: none; }
+      tbody td { padding: 8px 12px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================
+     LOGIN SCREEN
+============================= -->
+<div id="loginScreen">
+  <div class="login-card">
+    <h2>Admin Panel</h2>
+    <p>Sinbad · Maxfiy Sahifa</p>
+    <input type="password" id="passwordInput" placeholder="Parolni kiriting" onkeydown="if(event.key==='Enter') checkPassword()" />
+    <button class="login-btn" onclick="checkPassword()">Kirish</button>
+    <p class="login-error" id="loginError">Parol noto'g'ri. Qayta urining.</p>
+  </div>
+</div>
+
+<!-- ============================
+     DASHBOARD
+============================= -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-logo">⚓ Sinbad</span>
+      <span class="topbar-badge">Admin</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn-outline" onclick="refreshData()">↻ Yangilash</button>
+      <button class="btn-gold" onclick="downloadAllExcel()">↓ Excel Yuklab Olish</button>
+      <button class="btn-outline" onclick="logout()" style="color:var(--text-muted)">Chiqish</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- VISITORS STATS -->
+    <p class="section-title">Tashrif Buyuruvchilar</p>
+    <div class="stats-grid" id="statsGrid"></div>
+
+    <!-- SOURCE BARS -->
+    <p class="section-title">Manba bo'yicha taqsimot</p>
+    <div class="bar-section" id="barSection"></div>
+
+    <!-- DAILY VISITS -->
+    <p class="section-title">Kunlik Tashrif</p>
+    <div class="daily-grid" id="dailyGrid"></div>
+
+    <!-- BOOKINGS TABLE -->
+    <p class="section-title">Qabulga Yozilganlar</p>
+    <div class="table-section">
+      <div class="table-header">
+        <span class="table-title">Barcha Yozuvlar</span>
+        <span class="booking-count" id="bookingCountBadge">0 ta</span>
+      </div>
+      <div id="tableContainer"></div>
+    </div>
+
+    <div class="refresh-info" id="refreshInfo"></div>
+  </div>
+</div>
+
+<script>
+// ============================================
+// PAROL — o'zingiz xohlagan narsaga o'zgartiring
+// ============================================
+const ADMIN_PASSWORD = "sinbad2025";
+
+function checkPassword() {
+  const val = document.getElementById('passwordInput').value;
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadDashboard();
+    // Har 30 soniyada yangilanadi
+    setInterval(loadDashboard, 30000);
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('passwordInput').value = '';
+  }
+}
+
+function logout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('passwordInput').value = '';
+}
+
+function refreshData() {
+  loadDashboard();
+}
+
+function loadDashboard() {
+  const data = typeof window.sinbadGetAnalytics === 'function'
+    ? window.sinbadGetAnalytics()
+    : JSON.parse(localStorage.getItem('sinbad_analytics') || '{}');
+
+  const total = data.total || 0;
+  const sources = data.sources || {};
+  const bookings = data.bookings || [];
+  const daily = data.daily || {};
+
+  // --- STATS GRID ---
+  const sourceConfig = [
+    { key: 'total', label: 'Jami Tashrif', icon: '👁', cls: 'total', value: total, noPercent: true },
+    { key: 'instagram', label: 'Instagram', icon: '📸', cls: 'instagram' },
+    { key: 'telegram', label: 'Telegram', icon: '✈️', cls: 'telegram' },
+    { key: 'google_maps', label: 'Google Maps', icon: '🗺', cls: 'google' },
+    { key: 'yandex_maps', label: 'Yandex Maps', icon: '📍', cls: 'yandex' },
+    { key: 'direct', label: 'To\'g\'ridan', icon: '🔗', cls: 'direct' },
+    { key: 'other', label: 'Boshqa', icon: '🌐', cls: 'other' },
+  ];
+
+  const statsHtml = sourceConfig.map(s => {
+    const count = s.noPercent ? s.value : (sources[s.key] || 0);
+    const pct = total > 0 && !s.noPercent ? Math.round(count / total * 100) : null;
+    return `
+      <div class="stat-card ${s.cls}">
+        <div class="stat-icon">${s.icon}</div>
+        <div class="stat-number">${count}</div>
+        <div class="stat-label">${s.label}</div>
+        ${pct !== null ? `<div class="stat-pct">${pct}%</div>` : ''}
+      </div>`;
+  }).join('');
+
+  document.getElementById('statsGrid').innerHTML = statsHtml;
+
+  // --- BAR CHART ---
+  const barKeys = [
+    { key: 'instagram', label: 'Instagram', color: '#E1306C' },
+    { key: 'telegram', label: 'Telegram', color: '#2CA5E0' },
+    { key: 'google_maps', label: 'Google Maps', color: '#4285F4' },
+    { key: 'yandex_maps', label: 'Yandex Maps', color: '#FF0000' },
+    { key: 'direct', label: "To'g'ri kirish", color: '#8B7355' },
+    { key: 'other', label: 'Boshqa', color: '#5A5A5A' },
+  ];
+
+  const maxVal = Math.max(...barKeys.map(b => sources[b.key] || 0), 1);
+  const barsHtml = barKeys.map(b => {
+    const count = sources[b.key] || 0;
+    const width = Math.round(count / maxVal * 100);
+    return `
+      <div class="bar-row">
+        <div class="bar-label">
+          <span class="bar-dot" style="background:${b.color}"></span>
+          ${b.label}
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${width}%;background:${b.color}"></div>
+        </div>
+        <div class="bar-count">${count}</div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('barSection').innerHTML = barsHtml;
+
+  // --- DAILY GRID ---
+  const sortedDays = Object.entries(daily).sort((a, b) => b[0].localeCompare(a[0])).slice(0, 30);
+  const dailyHtml = sortedDays.length > 0
+    ? sortedDays.map(([date, count]) => `
+        <div class="day-cell">
+          <div class="day-date">${date.slice(5)}</div>
+          <div class="day-count">${count}</div>
+        </div>`).join('')
+    : '<p style="color:var(--text-muted);font-size:0.82rem;padding:12px">Hozircha ma\'lumot yo\'q</p>';
+
+  document.getElementById('dailyGrid').innerHTML = dailyHtml;
+
+  // --- BOOKINGS TABLE ---
+  document.getElementById('bookingCountBadge').textContent = `${bookings.length} ta`;
+
+  if (bookings.length === 0) {
+    document.getElementById('tableContainer').innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <div>Hozircha yozuvlar yo'q</div>
+      </div>`;
+  } else {
+    const sorted = [...bookings].reverse();
+    const rows = sorted.map(b => {
+      const src = b.source || 'other';
+      const srcLabel = {instagram:'Instagram',telegram:'Telegram',google_maps:'Google Maps',yandex_maps:'Yandex Maps',direct:"To'g'ri",other:'Boshqa'}[src] || src;
+      const dateStr = b.date ? new Date(b.date).toLocaleString('uz-UZ') : '—';
+      return `
+        <tr>
+          <td>${b.fullName || '—'}</td>
+          <td>${b.phone || '—'}</td>
+          <td>${b.serviceType || '—'}</td>
+          <td>${b.bookingDate || '—'}</td>
+          <td>${b.bookingTime || '—'}</td>
+          <td><span class="source-tag ${src}">${srcLabel}</span></td>
+          <td style="color:var(--text-muted);font-size:0.78rem">${dateStr}</td>
+        </tr>`;
+    }).join('');
+
+    document.getElementById('tableContainer').innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Ism Familiya</th>
+            <th>Telefon</th>
+            <th>Xizmat</th>
+            <th>Sana</th>
+            <th>Vaqt</th>
+            <th>Manba</th>
+            <th>Yozilgan</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  // Refresh info
+  document.getElementById('refreshInfo').textContent =
+    `Oxirgi yangilanish: ${new Date().toLocaleString('uz-UZ')} · Har 30 soniyada avtomatik yangilanadi`;
+}
+
+// =============================================
+// EXCEL YUKLASH — Mac va Windows uchun ishlaydi
+// =============================================
+function downloadAllExcel() {
+  const data = typeof window.sinbadGetAnalytics === 'function'
+    ? window.sinbadGetAnalytics()
+    : JSON.parse(localStorage.getItem('sinbad_analytics') || '{}');
+
+  const bookings = data.bookings || [];
+  const sources = data.sources || {};
+  const total = data.total || 0;
+  const daily = data.daily || {};
+
+  // BOM (UTF-8) + CSV format — Excel Mac va Windows da ochadi
+  let csv = '\uFEFF';
+
+  // === SHEET 1: Umumiy statistika ===
+  csv += 'UMUMIY STATISTIKA\n';
+  csv += `Jami tashrif,${total}\n`;
+  csv += `Instagram,${sources.instagram || 0}\n`;
+  csv += `Telegram,${sources.telegram || 0}\n`;
+  csv += `Google Maps,${sources.google_maps || 0}\n`;
+  csv += `Yandex Maps,${sources.yandex_maps || 0}\n`;
+  csv += `To'g'ri kirish,${sources.direct || 0}\n`;
+  csv += `Boshqa,${sources.other || 0}\n`;
+  csv += `Hisobot sanasi,${new Date().toLocaleString('uz-UZ')}\n`;
+  csv += '\n';
+
+  // === SHEET 2: Qabullar ===
+  csv += 'QABULGA YOZILGANLAR\n';
+  csv += 'Ism Familiya,Telefon,Yosh,Email,Xizmat Turi,Qabul Sanasi,Qabul Vaqti,Manba,Yozilgan Vaqt,Izoh\n';
+
+  bookings.forEach(b => {
+    const srcLabel = {instagram:'Instagram',telegram:'Telegram',google_maps:'Google Maps',yandex_maps:'Yandex Maps',direct:"To'g'ri kirish",other:'Boshqa'}[b.source] || b.source || 'Noma\'lum';
+    const dateStr = b.date ? new Date(b.date).toLocaleString('uz-UZ') : '';
+    csv += [
+      `"${b.fullName || ''}"`,
+      `"${b.phone || ''}"`,
+      `"${b.age || ''}"`,
+      `"${b.email || ''}"`,
+      `"${b.serviceType || ''}"`,
+      `"${b.bookingDate || ''}"`,
+      `"${b.bookingTime || ''}"`,
+      `"${srcLabel}"`,
+      `"${dateStr}"`,
+      `"${(b.notes || '').replace(/"/g, "'")}"`,
+    ].join(',') + '\n';
+  });
+
+  csv += '\n';
+
+  // === SHEET 3: Kunlik tashrif ===
+  csv += 'KUNLIK TASHRIF\n';
+  csv += 'Sana,Tashrif Soni\n';
+  Object.entries(daily)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .forEach(([date, count]) => {
+      csv += `"${date}",${count}\n`;
+    });
+
+  // Fayl nomi: sinbad-hisobot-2025-06-17.csv
+  const dateTag = new Date().toISOString().split('T')[0];
+  const filename = `sinbad-hisobot-${dateTag}.csv`;
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+<script src="tracker.js"></script>
+</body>
+</html>
