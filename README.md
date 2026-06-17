@@ -121,3 +121,94 @@ Agar internetsiz ham aniq shriftlar kerak bo'lsa:
 ---
 
 Savol bo'lsa — yozing, qo'shimcha bo'lim yoki dizaynni o'zgartirib beraman. 🏖
+
+# Sinbad Website — O'rnatish Qo'llanmasi
+
+## Fayllar
+```
+sinbad-website/
+├── tracker.js     → Barcha sahifalarга qo'shing (tracking uchun)
+├── booking.html   → Qabulga yozilish formasi
+├── admin.html     → Admin panel (faqat siz uchun)
+└── README.md      → Shu fayl
+```
+
+---
+
+## 1. tracker.js ni saytga qo'shish
+
+Saytingizning BARCHA sahifalarida `<head>` qismiga qo'shing:
+
+```html
+<script src="tracker.js"></script>
+```
+
+---
+
+## 2. booking.html
+
+Qabulga yozilish sahifasi. Siz xohlagan link orqali ochiladi:
+- `yoursite.com/booking.html`
+
+Xizmat turlarini o'zgartirish uchun `booking.html` faylida `<select id="serviceType">` qismini tahrirlang.
+
+---
+
+## 3. admin.html (MAXFIY SAHIFA)
+
+**Faqat siz bilasiz!** Hech kimga link bermang.
+
+URL: `yoursite.com/admin.html`
+
+### Kirish paroli o'zgartirish:
+`admin.html` faylini oching, quyidagi qatorni toping:
+```javascript
+const ADMIN_PASSWORD = "sinbad2025";
+```
+`sinbad2025` o'rniga o'zingizning parolingizni yozing.
+
+---
+
+## 4. Manba kuzatish (UTM Links)
+
+Instagram, Telegram, Google Maps dan to'g'ri kuzatish uchun linkga parametr qo'shing:
+
+### Instagram
+```
+yoursite.com/?utm_source=instagram&utm_medium=social
+```
+
+### Telegram
+```
+yoursite.com/?utm_source=telegram&utm_medium=social
+```
+
+### Google Maps
+```
+yoursite.com/?utm_source=google&utm_medium=maps
+```
+
+### Yandex Maps
+```
+yoursite.com/?utm_source=yandex&utm_medium=maps
+```
+
+---
+
+## 5. Excel Yuklab Olish
+
+Admin panelga kirib **"↓ Excel Yuklab Olish"** tugmasini bosing.
+
+- **Mac**: Numbers yoki Excel bilan oching
+- **Windows**: Excel bilan to'g'ri ochiladi
+- Fayl nomi: `sinbad-hisobot-YYYY-MM-DD.csv`
+
+Admin panel **har 30 soniyada** avtomatik yangilanadi.
+
+---
+
+## Muhim Eslatma
+
+Ma'lumotlar **brauzer localStorage** da saqlanadi. 
+Agar serverga ko'chirmoqchi bo'lsangiz, backend (Node.js, PHP, va h.k.) kerak bo'ladi.
+Yordam uchun murojaat qiling.
