@@ -190,7 +190,7 @@ yoursite.com/?utm_source=google&utm_medium=maps
 
 ### Yandex Maps
 ```
-yoursite.com/?utm_source=yandex&utm_medium=maps
+yoursite.com/?utm_source=yandex&utm_medium=maps 
 ```
 
 ---
